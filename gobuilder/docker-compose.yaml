@@ -1,0 +1,7 @@
+---
+version: '3'
+services:
+  base: 
+    build: .
+    image: pr8kerl/gobuilder:${IMAGE_TAG:-latest}
+    platform: linux/arm64

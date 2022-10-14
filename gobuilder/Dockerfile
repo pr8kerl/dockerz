@@ -1,7 +1,7 @@
-FROM golang:1.14
-ARG goreleaser=v0.132.1
-RUN curl -s -L -o /tmp/goreleaser.tgz \
-    "https://github.com/goreleaser/goreleaser/releases/download/$goreleaser/goreleaser_$(uname -s)_$(uname -m).tar.gz" \
-    && tar -xf /tmp/goreleaser.tgz -C /usr/local/bin \
-    && rm -f /tmp/goreleaser.tgz
+FROM golang:1.19
+ARG GORELEASER_VERSION=v1.11.5
+ARG TARGETOS
+ARG TARGETARCH
+RUN go install github.com/goreleaser/goreleaser@${GORELEASER_VERSION}
+
 ENTRYPOINT [ "make" ]
